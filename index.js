@@ -20,7 +20,10 @@ Do the following:
    HINT: no function required
 */
 
-
+const votingAge = 18;
+if (votingAge >= 18){
+  console.log(true);
+}
 
 /*
 Task 1b - Values (not auto tested)
@@ -34,8 +37,10 @@ Do the following:
    HINT: no function required
 */
 
-
-
+let firstThing = 14;
+const secondThing = 14;
+if (firstThing === secondThing){firstThing = ++firstThing;};
+console.log(firstThing);
 
 
 /*
@@ -49,7 +54,9 @@ Do the following:
    HINT: look up the Number method
 */
 
-
+let year = "1999";
+year = +year;
+console.log(year);
 
 
 /*
@@ -61,8 +68,8 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+function multiply(a, b){
+  return a * b;
 }
 
 
@@ -77,8 +84,8 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(age){
+  return Math.round(+age*7);
 }
 
 
@@ -98,7 +105,7 @@ HINT: Remember that the order in which we pass in our arguments matters when it 
 Feeding Requirements:
 
 Adult Dogs 1 year and older 
-   up to 5 lbs - 5% of their body weight
+   up to 5 lbs - 5% of their body weight 
    6 - 10 lbs - 4% of their body weight 
    11 - 15 lbs - 3% of their body weight 
    > 15lbs - 2% of their body weight 
@@ -109,6 +116,38 @@ Puppies less than 1 year
    7 - 12 months 4% of their body weight
   
 NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
+*/  
+
+function hungryDog(weight, age){
+  if(age < 1){
+    const monthsOld = 12 * age;
+    switch(true){
+      case monthsOld > 1 && monthsOld <= 4:
+        return (weight / 100 * 10);
+      case monthsOld > 4 && monthsOld <= 7:
+        return (weight / 100 * 5);
+      case monthsOld > 7 && monthsOld <= 12:
+        return (weight / 100 * 4);
+    }
+  } else {
+    switch(true){
+      case weight <= 5:
+        return (weight * 0.05);
+      case weight > 5 && weight <= 10:
+        return (weight * 0.04);
+      case weight > 10 && weight <= 15:
+        return (weight * 0.03);
+      case weight > 15:
+        return (weight * 0.02);
+    }
+  }
+}
+
+
+/*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
+
+
+/*
 NOTE 2: This is a great time to check the tests to see what it expects, versus what is actually 
         returned from your function. This is an example of the output to look for on each test point. 
           ● hungryDogFunction › Dog is 1 year and is 5lbs or less
@@ -121,24 +160,13 @@ NOTE 2: This is a great time to check the tests to see what it expects, versus w
               21 | describe('hungryDogFunction', ()=>{ 
               22 |   it('Dog is 1 year and is 5lbs or less', ()=>{
             > 23 |     expect(functions.hungryDog(4, 1)).toBe(0.2);
-                |
+                 |
           ^
               24 |   })
       
         Notice the expected and received, expected is what the test is looking for, and received is what was actually returned from this function. You can also see it's passing in two values, the number 4 and the number 1. 
         So, on this one test, the weight would be 4 pounds, and the age would be 1 years old. It's expecting your function to return a decimal number of 0.2
-*/  
-
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
-}
-
-
-
-/*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
-
 // Rock, Paper, Scissors - Let's play against the computer!
-/*
 Do the following:
 1. Create a new variable that randomly generates the computer's choice, this must not be done inside the function
 2. Use Math.random to determine the computer's choice (Math.random gives a random number between 0 and 1)
@@ -156,8 +184,29 @@ Use the game function below to do the following:
 RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors | Or there's a tie
 */
 
+let compChoice = Math.ceil(Math.random() * 3);
+console.log(compChoice);
+switch(compChoice){
+  case 1:
+    compChoice = "rock";
+    break;
+  case 2:
+    compChoice = "paper";
+    break;
+  case 3:
+    compChoice = "scissors";
+    break;
+}
 function game(user, computer){
-  /*add your code here*/
+  if(user === "scissors" && computer === "paper" || user === "paper" && computer === "rock" || user === "rock" && computer === "scissors"){
+    return "you win!";
+  }
+  else if(user === "paper" && computer === "scissors" || user === "rock" && computer === "paper" || user === "scissors" && computer === "rock"){
+    return "you lose!";
+  }
+  else if(user === computer){
+    return "it's a tie";
+  }
 }
 
 
@@ -173,8 +222,8 @@ Using the miles function below do the following:
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+function miles(km){
+  return km * 0.621371;
 }
 
 
@@ -187,8 +236,8 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(cm){
+  return cm / 30.48;
 }
 
 
@@ -207,8 +256,12 @@ Using the annoyingSong function below do the following:
 4. Each time the annoyingSong is run from this loop, it should console.log the string that was returned. 
 */
 
-function annoyingSong(/*add your code here*/){
-      /*add your code here*/
+function annoyingSong(rep){
+  return `${rep} bottles of soda on the wall, ${rep} bottles of soda, take one down pass it around ${rep - 1} bottles of soda on the wall`;
+}
+
+for(let i = 20; i > 0; i--){
+  console.log(annoyingSong(i));
 }
 
 
@@ -227,8 +280,19 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+function grade(grade){
+  switch(true){
+    case grade >= 90:
+      return 'you got an A';
+    case grade >= 80:
+      return 'you got a B';
+    case grade >= 70:
+      return 'you got a C';
+    case grade >= 60:
+      return 'you got a D';
+    case grade < 60:
+      return 'you got an F';
+  }
 }
 
 
